@@ -1,0 +1,10 @@
+<template name="playerlist">
+	<h2>Player List</h2>
+    {{#each players}}
+     <div class="checkbox">
+    	<label>
+      		<input type="checkbox"> {{name}}
+    	</label>
+  		</div>
+    {{/each}}
+</template>
