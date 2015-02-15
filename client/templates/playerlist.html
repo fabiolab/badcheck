@@ -1,12 +1,20 @@
 <template name="playerlist">
-	<h2>Player List</h2>
     {{#each players}}
-    	<h4>
-      		<input type="checkbox" checked={{here}}> {{name}}
-    	</h4>
+        {{#if here}}
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                </button><span class="h2"> {{name}} <small>{{here}}</small></span>
+            </div>
+        {{else}}
+            <div class="alert alert-warning" role="alert">
+                <button type="button" class="btn btn-warning btn-lg">
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                </button><span class="h2"> {{name}} <small>{{here}}</small></span>
+            </div>
+        {{/if}}
     {{/each}}
 </template>
-
 
 <!--         <div>
             {{name}} {{#if here==true}}<span class="label label-success"></span>{{else}}<span class="label label-danger"></span>{{/if}}

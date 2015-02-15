@@ -1,9 +1,12 @@
 Meteor.startup(function() {
     
     Meteor.publish(
-        'players', function(){
-            return playersCol.find()
+        'players', function (){
+            return playersCol.find({}, {"sort": {"name":1}})
+                // return playersCol.find({"here":{"$exists":true}},{"sort": {"here":-1}})
         }
+        // 'checkedPlayers', function(){
+        // }
     );
 
     return Meteor.methods({
@@ -21,7 +24,12 @@ Meteor.startup(function() {
          * @pPresence   A boolean (true for here, false for not here)
          */
         updatePresence: function(pId, pPresence){
-            playersCol.update({'_id':pId},{'$set':{'here':pPresence}},{upsert:false})
+            if (pPresence){
+                playersCol.update({'_id':pId},{'$set':{"here":pPresence}},{upsert:false})
+                // playersCol.update({'_id':pId},{'$set':{"$currentDate":{"here":true}}},{upsert:false})
+            }else{
+                playersCol.update({'_id':pId},{'$unset':{'here':""}},{upsert:false})
+            } 
         },
 
         /**

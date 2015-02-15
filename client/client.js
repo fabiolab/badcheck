@@ -1,8 +1,24 @@
 
 Meteor.subscribe('players');
 
+Router.route('/', function () {
+  this.render('playerlist');
+});
+
+Router.route('/checked', function () {
+  this.render('checkedPlayers');
+});
+
 Template.playerlist.helpers({
     players: function() {
+        // .find() allowed via the subscription to "players"
+        return playersCol.find();
+    }
+})
+
+Template.checkedPlayers.helpers({
+    players: function() {
+        // .find() allowed via the subscription to "players"
         return playersCol.find();
     }
 })
