@@ -15,20 +15,13 @@ Router.route('/admin', function () {
 
 Template.playerlist.helpers({
     players: function() {
-        // .find() allowed via the subscription to "players"
-        return playersCol.find({}, {"sort": {"name":1}})
-        // return playersCol.find();
-        // return getPlayers();
+        return playersCol.find({}, {"sort": {"nom":1}})
     }
 })
 
 Template.checkedPlayers.helpers({
     players: function() {
-        // .find() allowed via the subscription to "players"
         return playersCol.find({"here":{"$exists":true}},{"sort": {"here":-1}})
-        // return playersCol.find();
-        // return checked.find();
-        // return getCheckedPlayers(false);
     }
 })
 
@@ -38,6 +31,10 @@ Template.playerlist.events({
         Meteor.call('updatePresence',this._id,new_here);
     }
 })
+
+Handlebars.registerHelper("prettifyDate", function(pDate) {
+    return moment(pDate).format(' à HH:mm');
+});
 
 Template.upload.events({
     "change #files": function (e) {
@@ -53,9 +50,11 @@ Template.upload.events({
                     var lines = text.split("\n");
                     for(var i = 0; i<lines.length; i++){
                         var fields = lines[i].split(";");
-                        doc = {'name':fields[0],'here':(fields[1].toLowerCase() == "true")};
-                        // playersCol.insert(doc);
-                        Meteor.call('insertPlayer',doc);
+                        if (fields.length > 1){
+                            doc = {'nom':fields[0],'prenom':fields[1]};
+                            // playersCol.insert(doc);
+                            Meteor.call('insertPlayer',doc);
+                        }
                     }
                 }
                 reader.readAsText(file);
