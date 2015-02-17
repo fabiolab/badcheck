@@ -1,9 +1,7 @@
 <template name="checkedPlayers">
     {{#each players}}
-        {{#if here}}
-            <div class="alert alert-success" role="alert">
-                    <span class="h2"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{name}} <small>tes</small></span>
-            </div>
-        {{/if}}
+        <div class="alert alert-success" role="alert">
+            <span class="h2"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {{name}} <small>{{here}}</small></span>
+        </div>
     {{/each}}
 </template>

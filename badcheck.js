@@ -1,6 +1,7 @@
 
 playersCol = new Mongo.Collection('players');
 
+
 if (Meteor.isClient) {
 
 }
