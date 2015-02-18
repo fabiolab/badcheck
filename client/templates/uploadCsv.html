@@ -1,4 +1,9 @@
+
 <template name="upload">
-    <input type="file" id="files" name="files[]" multiple />
-    <output id="list"></output>
+	<div class="alert alert-info" role="alert">Upload a csv file with 2 columns : last-name;first-name;<br/>All existing data will be removed.<br/><br/>
+	    <span class="btn btn-success btn-file">
+	    	Browse ... <input type="file" id="files" name="files[]" multiple />
+	    </span>
+	    <output id="list"></output>
+    </div>
 </template>

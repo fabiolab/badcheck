@@ -33,7 +33,7 @@ Template.playerlist.events({
 })
 
 Handlebars.registerHelper("prettifyDate", function(pDate) {
-    return moment(pDate).format(' à HH:mm');
+    return 'le ' + moment(pDate).format('D MMMM à HH:mm');
 });
 
 Template.upload.events({
