@@ -1,6 +1,8 @@
-
+// Subscribe to the server player collection
+// Update of the client collection is done from this
 Meteor.subscribe('players');
 
+// Routing
 Router.route('/', function () {
   this.render('playerlist');
 });
