@@ -20,10 +20,9 @@ Meteor.startup(function() {
          */
         updatePresence: function(pId, pPresence){
             if (pPresence){
-                // playersCol.update({'_id':pId},{'$set':{"here":pPresence}},{upsert:false})
-                playersCol.update({'_id':pId},{'$set':{"here":new Date()}},{upsert:false})
+                playersCol.update({'_id':pId},{'$set':{"check_date":new Date()}},{upsert:false})
             }else{
-                playersCol.update({'_id':pId},{'$unset':{'here':""}},{upsert:false})
+                playersCol.update({'_id':pId},{'$unset':{'check_date':""}},{upsert:false})
             } 
         },
 

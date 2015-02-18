@@ -21,14 +21,14 @@ Template.playerlist.helpers({
 
 Template.checkedPlayers.helpers({
     players: function() {
-        return playersCol.find({"here":{"$exists":true}},{"sort": {"here":-1}})
+        return playersCol.find({"check_date":{"$exists":true}},{"sort": {"check_date":-1}})
     }
 })
 
 Template.playerlist.events({
     click: function(){    
-        new_here = !this.here;
-        Meteor.call('updatePresence',this._id,new_here);
+        new_check_date = !this.check_date;
+        Meteor.call('updatePresence',this._id,new_check_date);
     }
 })
 
