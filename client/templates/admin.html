@@ -1,0 +1,32 @@
+
+<template name="admin">
+<div>
+	<div class="alert alert-info" role="alert">Upload a csv file with 2 columns : last-name;first-name;<br/><br/>
+		<form class="form-inline">
+			<div class="form-group">
+				<input type="text" class="form-control" id="event" placeholder="Event title">
+			</div>
+		    <span class="btn btn-success btn-file">
+		    	Browse ... <input type="file" id="files" name="files[]" multiple />
+		    </span>
+		    <span class="btn btn-info">
+		    	Ok
+		    </span>
+		    <output id="list"></output>
+		</form>
+    </div>
+    <div class="panel panel-default">
+		<div class="panel-heading">Alertes</div>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href=""><button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</button></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</template>

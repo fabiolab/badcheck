@@ -12,7 +12,7 @@ Router.route('/checked', function () {
 });
 
 Router.route('/admin', function () {
-  this.render('upload');
+  this.render('admin');
 });
 
 Template.playerlist.helpers({
@@ -38,7 +38,7 @@ Handlebars.registerHelper("prettifyDate", function(pDate) {
     return 'le ' + moment(pDate).format('D MMMM à HH:mm');
 });
 
-Template.upload.events({
+Template.admin.events({
     "change #files": function (e) {
 
         Meteor.call('removeAllPlayers');
