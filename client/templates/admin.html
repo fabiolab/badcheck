@@ -1,32 +1,42 @@
 
 <template name="admin">
-<div>
-	<div class="alert alert-info" role="alert">Upload a csv file with 2 columns : last-name;first-name;<br/><br/>
-		<form class="form-inline">
-			<div class="form-group">
-				<input type="text" class="form-control" id="event" placeholder="Event title">
-			</div>
-		    <span class="btn btn-success btn-file">
-		    	Browse ... <input type="file" id="files" name="files[]" multiple />
-		    </span>
-		    <span class="btn btn-info">
-		    	Ok
-		    </span>
-		    <output id="list"></output>
-		</form>
-    </div>
-    <div class="panel panel-default">
-		<div class="panel-heading">Alertes</div>
+	<div>
+        {{#if isLogged}}
+
+		<div class="alert alert-info" role="alert">Upload a csv file with 2 columns : last-name;first-name;<br/><br/>
+			<form class="form-inline" id="addEvent">
+				<div class="form-group">
+					<input type="text" class="form-control" id="eventname" placeholder="Event title">
+				</div>
+			    <span class="btn btn-success btn-file">
+			    	{{myfile}}<input type="file" id="files" name="files[]" multiple />
+			    </span>
+			    <span class="btn btn-info {{form_enable}}" id="submitForm">
+			    	Ok
+			    </span>
+			</form>
+	    </div>
+    	<div class="panel panel-default">
 			<table class="table table-striped">
-				<tbody>
+				<tbody>    
+				{{#each events}}
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td><a href=""><button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</button></a></td>
+						<td id="event_{{_id}}">{{event}}</td> 
+						<td><a href="/?token={{token}}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> <span id="token_{{_id}}">{{token}}</span></button></a></td>
+						<td><button type="button" class="btn btn-danger btn-sm deleteEvent" value={{_id}}><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</button></td>
 					</tr>
+			    {{/each}}
 				</tbody>
 			</table>
 		</div>
+
+
+        {{else}}
+        
+		<div class="alert alert-warning" role="alert">Sign in to create an event and share your data
+		</div>
+
+        {{/if}}
+
 	</div>
 </template>
