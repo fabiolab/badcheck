@@ -55,15 +55,15 @@ Template.admin.helpers({
         return eventsCol.find();
     },
     form_enable: function(){
-        if (!Session.get('myfile')){
+        if (!Session.get('myfile') || !Session.get('eventName')){
             return "disabled";
         }
     },
     btnType:function(){
         if (eventsCol.findOne({'token':Session.get('currentToken')}) !== undefined){
-            return {'type':"btn-danger",'label':"Event will be erased"};
+            return {'type':"btn-danger",'label':"Ok",'message':"Event will be erased"};
         }else{
-            return {'type':"btn-info",'label':"Ok"};
+            return {'type':"btn-info",'label':"Ok",'message':""};
         }
     }
 })
@@ -100,10 +100,7 @@ Template.admin.events({
     "keyup #eventname": function (event, template){
         var token = CryptoJS.MD5(event.target.value).toString();
         Session.set('currentToken', token);
-        // console.log(event.target.value);
-        // var exists = (eventsCol.findOne({'token':token}) !== undefined);
-        // // var exists = Meteor.call('existsEvent',Meteor.userId(),token);
-        // console.log(exists);
+        Session.set('eventName',event.target.value);
     },
 
     "click #submitForm": function(event, template){
@@ -114,7 +111,6 @@ Template.admin.events({
 
         // generate token
         var token = CryptoJS.MD5(eventName).toString();
-        console.log(token);
 
         Meteor.call('removeAllPlayers',Meteor.userId(),token);
         Meteor.call('insertEvent',eventName,Meteor.userId(),token);

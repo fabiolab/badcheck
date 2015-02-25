@@ -8,7 +8,7 @@ Meteor.startup(function() {
         return eventsCol.find({'user_id':pUserId});
     });
 
-    return Meteor.methods({
+    Meteor.methods({
         
         /**
          * Removes all players from the db
