@@ -58,6 +58,13 @@ Template.admin.helpers({
         if (!Session.get('myfile')){
             return "disabled";
         }
+    },
+    btnType:function(){
+        if (eventsCol.findOne({'token':Session.get('currentToken')}) !== undefined){
+            return {'type':"btn-danger",'label':"Event will be erased"};
+        }else{
+            return {'type':"btn-info",'label':"Ok"};
+        }
     }
 })
 
@@ -88,6 +95,15 @@ Handlebars.registerHelper("prettifyDate", function(pDate) {
 Template.admin.events({
     "change #files": function (e) {
         Session.set('myfile',e.target.files[0].name);
+    },
+
+    "keyup #eventname": function (event, template){
+        var token = CryptoJS.MD5(event.target.value).toString();
+        Session.set('currentToken', token);
+        // console.log(event.target.value);
+        // var exists = (eventsCol.findOne({'token':token}) !== undefined);
+        // // var exists = Meteor.call('existsEvent',Meteor.userId(),token);
+        // console.log(exists);
     },
 
     "click #submitForm": function(event, template){
@@ -125,6 +141,9 @@ Template.admin.events({
                 Session.set('myfile',file.name);
             }
         }
+        Session.set('myfile',null);
+        Session.set('currentToken', null);
+        Session.set('eventName',null);
     },
     "click .deleteEvent": function(event, template){
         event.preventDefault();

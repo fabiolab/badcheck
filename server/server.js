@@ -1,7 +1,6 @@
 Meteor.startup(function() {
 
     Meteor.publish('players', function (pToken){
-        console.log({'token':pToken});
         return playersCol.find({'token':pToken});
     });
 
@@ -55,12 +54,11 @@ Meteor.startup(function() {
                 'user_id':pUserId,
                 'token':pToken
             };
-            console.log(doc);
-            return eventsCol.insert(doc);
+            return eventsCol.update(doc,doc,{'upsert':true});
          },
 
         removeEvent: function(pUserId, pToken) {
             return eventsCol.remove({'user_id':pUserId, 'token':pToken});
-        },         
+        }
     });
 });
