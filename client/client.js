@@ -6,6 +6,13 @@ Deps.autorun(function(){
 });
 
 // Routing
+Router.route('/presentation', function () {
+    if (this.params.query.token){
+        Session.set('token',this.params.query.token);
+    }
+    this.render('presentation');
+});
+
 Router.route('/', function () {
     if (this.params.query.token){
         Session.set('token',this.params.query.token);

@@ -1,4 +1,5 @@
 <template name="playerlist">
+<div class="container">
     {{#each players}}
         {{#if check_date}}
             <div class="alert alert-success" role="alert">
@@ -14,4 +15,5 @@
             </div>
         {{/if}}
     {{/each}}
+    </div>
 </template>

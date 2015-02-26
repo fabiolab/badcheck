@@ -4,10 +4,6 @@ Meteor.startup(function() {
         return playersCol.find({'token':pToken});
     });
 
-    Meteor.publish('events', function (pUserId){
-        return eventsCol.find({'user_id':pUserId});
-    });
-
     Meteor.methods({
         
         /**
@@ -46,19 +42,6 @@ Meteor.startup(function() {
             pPlayer.token = pToken;
             pPlayer.user_id = pUserId;
             return playersCol.insert(pPlayer);
-         },
-
-         insertEvent: function(pEventName, pUserId, pToken){
-            var doc = {
-                'event':pEventName,
-                'user_id':pUserId,
-                'token':pToken
-            };
-            return eventsCol.update(doc,doc,{'upsert':true});
-         },
-
-        removeEvent: function(pUserId, pToken) {
-            return eventsCol.remove({'user_id':pUserId, 'token':pToken});
-        }
-    });
+         }
+         });
 });
