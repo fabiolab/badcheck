@@ -27,6 +27,3 @@ Router.route('/admin', function () {
     this.render('admin');
 });
 
-Router.route('/clear', function () {
-    Meteor.call('clear');
-});
