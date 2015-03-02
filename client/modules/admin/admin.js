@@ -64,7 +64,7 @@ Template.admin.events({
                     for(var i = 0; i<lines.length; i++){
                         var fields = lines[i].split(";");
                         if (fields.length > 1){
-                            doc = {'nom':fields[0],'prenom':fields[1]};
+                            doc = {'prenom':fields[0],'nom':fields[1]};
 
                             Meteor.call('insertPlayer',doc,Meteor.userId(),token);
                         }
