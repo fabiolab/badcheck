@@ -1,51 +1,53 @@
 <template name="home">
-    <div class="container-fluid">
-    
-        <div class="row">
-            <div class="col-sm-6 col-md-6">
-                <div class="thumbnail">
-<!--                     <img src="..." alt="...">
- -->                    <div class="caption">
-                        <h3>Présentation</h3>
-                        Bad check est une application "réactive" qui permet de pointer les joueurs d'un tournoi depuis un ou plusieurs terminaux et de consulter la même liste depuis un autre point : chaque modification effectuée d'un coté est instantanément visible sur les autres terminaux ! Finis les va-et-vients entre le hall de la salle et la table de marque !
-                    </div>
+
+    <div id="home" class="home">
+        <div class="text-vcenter">
+            <h1>Bad Check</h1>
+            <h3>Application de pointage de joueurs "temps réél"</h3>
+            <a href="#about" class="btn btn-success btn-lg">Continue</a> <a href="/players/?token=8a3b946902681d2fe7d121b52c09b6f9" class="btn btn-primary btn-lg">Demo</a>
+        </div>
+    </div>
+
+    <div id="about" class="pad-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/checklist.png" class="img-responsive" alt="" />
                 </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6">
-                <div class="thumbnail">
-<!--                     <img src="..." alt="...">
- -->                    <div class="caption">
-                        <h3>Utilisation</h3>
-                        Tout se passe en ligne : il suffit de créer un compte, ajouter un événement (un fichier texte avec la liste des joueurs suffit pour créer la base des entrées), et partager l'url que vous propose l'application avec les gens qui effectueront le pointage. Pour résumer :
-                        <ul>
-                            <li>Créer un compte ;</li>
-                            <li>Ajouter un événement à partir d'un fichier texte contenant à chaque ligne le nom et le prénom d'un joueur : Vanneste;Pedro;</li>
-                            <li>Partager l'url générée pour cet événement avec les organisateurs chargés du pointage et de la table de marque ;</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6">
-                <div class="thumbnail">
-<!--                     <img src="..." alt="...">
- -->                    <div class="caption">
-                        <h3>Demo</h3>
-                        Pour voir en vrai comment ça marche, il suffit de cliquer ici, et de constater que tout se met à jour tout seul d'un terminal à l'autre ...
-                        <p><a href="/players?token=f0258b6685684c113bad94d91b8fa02a" class="btn btn-primary" role="button">Button</a></p>
-                    </div>
-                 </div>
-            </div>    
-
-            <div class="col-sm-6 col-md-6">
-                <div class="thumbnail">
-<!--                     <img src="..." alt="...">
- -->                    <div class="caption">
-                        <h3>Combien ça coûte ?</h3>Bah ben en fait c'est gratuit. Et le code de l'appli est sous licence GPL, ce qui veut dire que vous pouvez le récupérer, le modifier, le déployer sur votre propre serveur, ...
-                    </div>
+                <div class="col-sm-8 text-center">
+                    <h2>Pointage en "temps réél"</h2>
+                    <p class="lead">Bad check est une application "réactive" qui permet de pointer les joueurs d'un tournoi depuis un ou plusieurs terminaux et de consulter la même liste depuis un autre point : chaque modification effectuée d'un coté est instantanément visible sur les autres terminaux ! Finis les va-et-vients entre le hall de la salle et la table de marque !</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="services" class="pad-section">
+        <div class="container">
+            <h2 class="text-center">Comment ça marche ?</h2> <hr />
+            <div class="row text-center">
+                <div class="col-sm-3 col-xs-6">
+                    <i class="glyphicon glyphicon-cloud"> </i>
+                    <h4>1. Créez un compte</h4>
+                    <p>C'est gratuit, garantit sans spam, pub ou autre sans réutilisation de vos données</p>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <i class="glyphicon glyphicon-leaf"> </i>
+                    <h4>2. Ajoutez un événement</h4>
+                    <p>Créer un nouvel événement à partir d'un fichier texte contenant une liste de joueurs (un joueur par ligne "nom;prénom;")</p>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <i class="glyphicon glyphicon-share"> </i>
+                    <h4>3. Partagez l'événement</h4>
+                    <p>Envoyez par email l'url générée par l'appli pour permettre aux autres organisateurs d'avoir accès à la liste des joueurs</p>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <i class="glyphicon glyphicon-bullhorn"> </i>
+                    <h4>4. Pointez !</h4>
+                    <p>A partir d'un navigateur, pointez les joueurs lors de leur arrivée : tous les terminaux affichant la liste sont mis à jour instantanément</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>

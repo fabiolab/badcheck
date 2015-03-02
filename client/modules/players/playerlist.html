@@ -2,7 +2,15 @@
     
     {{> menu}}
 
-    <div class="container">
+    <div class="container pad-section">
+        {{#if isEmpty}}
+            {{#if tokenExists}}
+                <div class="alert alert-warning" role="alert">No data associated to the current token</div>
+            {{else}}
+                <div class="alert alert-warning" role="alert">Get a token</div>
+            {{/if}}
+        {{/if}}
+
         {{#each players}}
             {{#if check_date}}
                 <div class="alert alert-success" role="alert">

@@ -23,6 +23,9 @@ Template.admin.helpers({
     },
     isLogged: function() {
         return Meteor.userId() != null;
+    },
+    hostName: function() {
+        return window.location.host;
     }
 })
 
@@ -32,7 +35,7 @@ Template.admin.events({
     },
 
     "keyup #eventname": function (event, template){
-        var token = CryptoJS.MD5(event.target.value).toString();
+        var token = CryptoJS.MD5(Meteor.userId() + event.target.value).toString();
         Session.set('currentToken', token);
         Session.set('eventName',event.target.value);
     },
@@ -44,7 +47,7 @@ Template.admin.events({
         var eventName = template.find("input[id=eventname]").value;
 
         // generate token
-        var token = CryptoJS.MD5(eventName).toString();
+        var token = CryptoJS.MD5(Meteor.userId() + eventName).toString();
 
         Meteor.call('removeAllPlayers',Meteor.userId(),token);
         Meteor.call('insertEvent',eventName,Meteor.userId(),token);
