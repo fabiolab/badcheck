@@ -27,3 +27,7 @@ Router.route('/admin', function () {
     this.render('admin');
 });
 
+Router.route('/users', function () {
+    this.render('users');
+});
+

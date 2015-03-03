@@ -1,0 +1,15 @@
+<template name='users'>
+    
+    {{> menu}}
+
+
+    <div class="container pad-section">    
+
+
+    {{#each users}}
+        <div>
+            {{displayEmails emails}}
+        </div>
+    {{/each}}
+    </div>
+</template>
