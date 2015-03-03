@@ -3,6 +3,7 @@
 Deps.autorun(function(){ 
     Meteor.subscribe('players',Session.get('token'));
     Meteor.subscribe('events',Meteor.userId());
+    Meteor.subscribe('users');
 });
 
 // Helpers that formats dates in the templates
