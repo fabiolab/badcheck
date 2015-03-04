@@ -4,6 +4,13 @@ Meteor.startup(function() {
         return matchsCol.find({});
     });
 
+    Meteor.publish('allMatchs', function (){
+        return eventsCol.find({},{fields:{token:0}});
+    });
+
+    Meteor.publish('eventMatchs', function (pToken){
+        return eventsCol.find({token:pToken});
+    });
     Meteor.methods({
         
         /**
