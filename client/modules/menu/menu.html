@@ -10,7 +10,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Bad Check</a>
+                {{#if event}}
+                    <a class="navbar-brand" href="/">{{event}}</a>
+                {{else}}
+                    <a class="navbar-brand" href="/">Bad Check</a>
+                {{/if}}
             </div>
 
             <div class="collapse navbar-collapse" id="collapsed-items">
