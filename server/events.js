@@ -2,6 +2,8 @@ Meteor.startup(function() {
 
     // if a pUserId is given, returns only the user events with all info
     // else, returns all the events without the token information
+    // Subscribing both will merge the data and proovide the token info to
+    // the docs matching the current user
     Meteor.publish('allEvents', function (){
         return eventsCol.find({},{fields:{token:0}});
     });
