@@ -2,12 +2,12 @@ Meteor.startup(function() {
 
     // if a pUserId is given, returns only the user events with all info
     // else, returns all the events without the token information
-    Meteor.publish('events', function (pUserId){
-        if (pUserId){
-            return eventsCol.find({user_id:pUserId});
-        }else{
-            return eventsCol.find({},{fields:{token:0}});
-        }
+    Meteor.publish('allEvents', function (){
+        return eventsCol.find({},{fields:{token:0}});
+    });
+
+    Meteor.publish('userEvents', function (pUserId){
+        return eventsCol.find({user_id:pUserId});
     });
 
     Meteor.methods({

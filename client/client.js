@@ -2,7 +2,8 @@
 // Update of the client collection is done from this
 Deps.autorun(function(){ 
     Meteor.subscribe('players',Session.get('token'));
-    Meteor.subscribe('events',Meteor.userId());
+    Meteor.subscribe('userEvents',Meteor.userId());
+    Meteor.subscribe('allEvents');
     Meteor.subscribe('users');
 });
 
