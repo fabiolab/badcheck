@@ -1,29 +1,40 @@
 <template name="match">
 
-    {{#each matchs}}
+    <!-- 
+        "with" creates a context and allow to use "this" in the event part
+        to handle the data (a match here)
+    -->
+    {{#with match}}
 
     <div class="container pad-section">
         <div class="row">
             <div class="col-md-2">                
             </div>
             <div class="col-md-5">
-                <h1>
-                    <button type="button" class="btn btn-success btn-lg scoreup-a">
+                                 
+                    <h1>
+                     
+                    <button type="button" class="btn btn-success btn-lg scoreup-a" title="+1">
+                    {{#if hasWonTeamA}}
+                        <img src="img/label.png" class="img-responsive" alt="winner"/>
+                    {{else}}  
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    {{/if}}  
                     </button>
+
                     {{team_a.players.[0].first_name}} {{date_end}}
-                    <button type="button" class="btn btn-danger btn-xs scoredown-a">
+                    <button type="button" class="btn btn-danger btn-xs scoredown-a" title="-1 (double clic)">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </button>
                 </h1>
             </div>
             <div class="col-md-5">
                 <h1>
-                    <button type="button" class="btn btn-success btn-lg scoreup-b">
+                    <button type="button" class="btn btn-success btn-lg scoreup-b" title="+1">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     {{team_b.players.[0].first_name}}
-                    <button type="button" class="btn btn-danger btn-xs scoredown-b">
+                    <button type="button" class="btn btn-danger btn-xs scoredown-b" title="-1 (double clic)">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </button>
                 </h1>
@@ -33,5 +44,5 @@
         {{> set}}
 
     </div>
-    {{/each}}
+    {{/with}}
 </template>

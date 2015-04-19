@@ -1,6 +1,7 @@
 /**
  * Sets session var depending on query params
- * @pQueryParams  a params object given by the iron Router module
+ *
+ * @param pQueryParams  a params object given by the iron Router module
  */
 setSessionVar = function(pQueryParams){
     if (pQueryParams.token){
@@ -49,8 +50,8 @@ Router.route('/match', function () {
     idmatch = this.params.query.idmatch;
     this.render('match',{
         data:{
-            matchs: function() {
-                return matchsCol.find({'_id':idmatch});
+            match: function() {
+                return matchsCol.findOne({'_id':idmatch});
             }
         }
     });
@@ -84,4 +85,3 @@ Router.route('/admin', function () {
 Router.route('/users', function () {
     this.render('users');
 });
-
