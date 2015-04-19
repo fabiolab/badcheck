@@ -1,0 +1,33 @@
+<template name="matchlist">
+    
+    {{> menu}}
+
+    <div class="container pad-section">
+        <button type="button" class="btn btn-success btn-lg" id='addmatch'>
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Add match
+        </button>
+        {{#each matchs}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tournoi de Saint Jacques - {{stage}} - {{tableau}}</h3>
+                </div>
+                <div class="panel-body">
+                    <span class="h2">{{team_a.players.[0].first_name}} vs {{team_b.players.[0].first_name}} : </span>
+                    {{#if team_a.sets.[0].score}}
+                        <span class="h3">{{team_a.sets.[0].score}}/{{team_b.sets.[0].score}}</span>
+                    {{/if}}
+                    {{#if team_a.sets.[1].score}}
+                         - <span class="h3">{{team_a.sets.[1].score}}/{{team_b.sets.[1].score}}</span>
+                    {{/if}}
+                    {{#if team_a.sets.[2].score}}
+                         - <span class="h3">{{team_a.sets.[2].score}}/{{team_b.sets.[2].score}}</span>
+                    {{/if}}
+            </div>
+                <div class="panel-footer">
+                    <a target="_blank" href="/match?idmatch={{_id}}">{{_id}}</a>
+                </div>
+            </div>
+                
+        {{/each}}
+    </div>
+</template>

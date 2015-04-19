@@ -4,6 +4,7 @@ Deps.autorun(function(){
     Meteor.subscribe('players',Session.get('token'));
     Meteor.subscribe('userEvents',Meteor.userId());
     Meteor.subscribe('allEvents');
+    Meteor.subscribe('allMatchs');
     Meteor.subscribe('users');
 });
 

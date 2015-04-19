@@ -79,7 +79,7 @@ Template.admin.events({
         Session.set('eventName',null);
     },
     "click .deleteEvent": function(event, template){
-        event.preventDefault();
+        event.preventDefault(); 
 
         var id = event.target.value;
         var token = template.find("span[id=token_"+id+"]");

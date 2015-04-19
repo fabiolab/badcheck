@@ -1,0 +1,31 @@
+{
+    'event_id':'',
+    'user_id':'',
+    'location':'',
+    'date_start':'',
+    'date_end':'',
+    'stade':'',
+    'discipline':''
+    'team_a':[
+        {
+            'first_name':'',
+            'last_name':'',
+            'club':'',
+            'ranking':''
+        },
+        ...
+    ],
+    'team_b':[
+    ],
+    'score_team_a':{
+        'set_1':,
+        'set_2':,
+        'set_3':
+    },
+    'score_team_b':{
+        'set_1':,
+        'set_2':,
+        'set_3':
+    },
+    'winner':''
+}
