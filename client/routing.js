@@ -3,7 +3,7 @@
  *
  * @param pQueryParams  a params object given by the iron Router module
  */
-setSessionVar = function(pQueryParams){
+setSessionVarFromQueryParam = function(pQueryParams){
     if (pQueryParams.token){
         Session.set('token',pQueryParams.token);
     }
@@ -13,13 +13,18 @@ setSessionVar = function(pQueryParams){
 }
 
 // Routing
+// Home path
 Router.route('/', function () {
-    setSessionVar(this.params.query);
+    setSessionVarFromQueryParam(this.params.query);
     this.render('home');
 });
 
+
+/*
+ * Displays the player list matching a given token
+ */
 Router.route('/players', function () {
-    setSessionVar(this.params.query);
+    setSessionVarFromQueryParam(this.params.query);
     this.render('playerlist',{
         data:{
             players: function() {
@@ -29,6 +34,25 @@ Router.route('/players', function () {
     });
 });
 
+
+/*
+ * Displays the players matching a token that have already checked in
+ */
+Router.route('/checked', function () {
+    setSessionVarFromQueryParam(this.params.query);
+    this.render('checkedPlayers',{
+        data:{
+            players: function() {
+                return playersCol.find({"check_date":{"$exists":true}},{"sort": {"check_date":-1}})
+            }
+        }
+    });
+});
+
+
+/* 
+ * Displays the match list
+ */
 Router.route('/matchs', function () {
     clear = this.params.query.clear;
 
@@ -36,7 +60,7 @@ Router.route('/matchs', function () {
         Meteor.call('clearAllMatchs');
     }
 
-    setSessionVar(this.params.query);
+    setSessionVarFromQueryParam(this.params.query);
     this.render('matchlist',{
         data:{
             matchs: function() {
@@ -46,6 +70,10 @@ Router.route('/matchs', function () {
     });
 });
 
+
+/*
+ * Displays a match matching an id
+ */
 Router.route('/match', function () {
     idmatch = this.params.query.idmatch;
     this.render('match',{
@@ -57,31 +85,19 @@ Router.route('/match', function () {
     });
 });
 
-Router.route('/addmatch', function () {
-    idmatch = this.params.query.idmatch;
-    this.render('addmatch');
-});
 
-Router.route('/clearmatchs', function () {
-    this.render('clearmatch');
-});
-
-Router.route('/checked', function () {
-    setSessionVar(this.params.query);
-    this.render('checkedPlayers',{
-        data:{
-            players: function() {
-                return playersCol.find({"check_date":{"$exists":true}},{"sort": {"check_date":-1}})
-            }
-        }
-    });
-});
-
+/*
+ * Access to the admin interface
+ */
 Router.route('/admin', function () {
-    setSessionVar(this.params.query);
+    setSessionVarFromQueryParam(this.params.query);
     this.render('admin');
 });
 
+
+/*
+ * Displays the user list
+ */
 Router.route('/users', function () {
     this.render('users');
 });

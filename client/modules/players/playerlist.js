@@ -1,8 +1,5 @@
 
 Template.playerlist.helpers({
-    // players: function() {
-    //     return playersCol.find({}, {"sort": {"nom":1}});
-    // },
     isEmpty: function() {
         return playersCol.find().count() === 0;
     },

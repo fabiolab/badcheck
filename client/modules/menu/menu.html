@@ -19,11 +19,23 @@
 
             <div class="collapse navbar-collapse" id="collapsed-items">
                 <ul class="nav navbar-nav">
-                    <li><a href="/players">Check List</a></li>
-                    <li><a href="/checked">Checked</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Check In<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/players">Check List</a></li>
+                            <li><a href="/checked">Checked</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="/matchs">Matchs</a></li>
                     {{#if isLogged}}
-                        <li><a href="/admin">Admin</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/admin">Players</a></li>
+                                <li><a href="/admin">Matchs</a></li>
+                            </ul>
+                        </li>
                     {{/if}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
